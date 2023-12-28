@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="xyz.shi.domain">
+    <class name="Course" table="course" schema="jdbc">
+        <id name="id" column="id" >
+            <generator class="native"></generator>
+        </id>
+
+        <property name="name" column="name" length="100"/>
+
+        <set name="students" table="student_course" cascade="save-update"  inverse="true">
+            <key column="course_id"></key>
+            <many-to-many class="Student" column="student_id"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="xyz.shi.domain.Grade" table="grade" schema="shi_jdbc">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name" length="100" type="java.lang.String"/>
+        <!--使用 set 元素维护一对多关联关系-->
+        <set name="students">
+            <key column="gid"></key>
+            <one-to-many class="xyz.shi.domain.Student"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

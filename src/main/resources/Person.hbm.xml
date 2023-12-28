@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="xyz.shi.domain">
+    <class name="Person" table="t_person">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name"/>
+        <!-- 一对一配置，设置属性unique=”true”就变成了一对一  -->
+        <!-- 配置一对一的关系，基于外键的方式 -->
+        <many-to-one name="idCard" column="t_idCard_id" unique="true" cascade="all" ></many-to-one>
+    </class>
+</hibernate-mapping>
